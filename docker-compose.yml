@@ -1,0 +1,29 @@
+services:
+  backend:
+    build: 
+      context: .
+    ports:
+      - "3001:3001"
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/meuBanco
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+    
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app-network
+  
+networks:
+    app-network:
+      driver: bridge
+  
+volumes:
+    mongo-data:
+      driver: local

@@ -1,0 +1,26 @@
+name: WorkFlow Github Actions
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do Codigo
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Build do Docker
+        uses: docker build .
+      - name: Iniciar Docker Compose
+        run: docker compose up
+      - name: Aplicacao
+        run: echo "Pipeline executada com sucesso!"
+      - name: Teste de Aplicacao
+        run: ls -la
+      
