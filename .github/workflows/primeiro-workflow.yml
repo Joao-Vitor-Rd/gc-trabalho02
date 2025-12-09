@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: '16'
       - name: Build do Docker
-        uses: docker build .
+        run: docker build .
       - name: Iniciar Docker Compose
         run: docker compose up
       - name: Aplicacao
