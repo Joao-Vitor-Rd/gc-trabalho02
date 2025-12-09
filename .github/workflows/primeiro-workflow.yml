@@ -17,10 +17,9 @@ jobs:
           node-version: '16'
       - name: Build do Docker
         run: docker build .
-      - name: Iniciar Docker Compose
-        run: docker compose up
       - name: Aplicacao
         run: echo "Pipeline executada com sucesso!"
       - name: Teste de Aplicacao
         run: ls -la
+
       
